@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import postmark from "postmark";
+import * as postmark from "postmark";
 
 export const runtime = "nodejs";
 
