@@ -16,6 +16,7 @@ export default function EmailForm() {
   const [to, setTo] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
+  const [senderName, setSenderName] = useState('')
   const [status, setStatus] = useState({ type: '', message: '' })
   const [isSending, setIsSending] = useState(false)
   const [mounted, setMounted] = useState(false)
@@ -92,6 +93,9 @@ export default function EmailForm() {
   }
 
   const addSignature = (type) => {
+    // Set the sender name based on signature type
+    setSenderName(type === 'elliot' ? 'Elliot Koh' : 'James Lim')
+    
     setMessage(currentMessage => {
       // Only add signature if it's not already there (check for both signatures)
       if (!currentMessage.includes(signatures.elliot.trim()) && 
@@ -153,7 +157,8 @@ export default function EmailForm() {
           subject,
           message,
           username: credentials.username,
-          password: credentials.password
+          password: credentials.password,
+          senderName
         }),
       })
 
@@ -167,6 +172,7 @@ export default function EmailForm() {
       setTo('')
       setSubject('')
       setMessage('')
+      setSenderName('')
       setStatus({
         type: 'success',
         message: 'Email sent successfully!'
@@ -304,4 +310,4 @@ export default function EmailForm() {
       </form>
     </div>
   )
-} 
+}

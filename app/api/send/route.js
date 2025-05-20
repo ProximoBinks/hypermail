@@ -7,7 +7,7 @@ export async function POST(request) {
   try {
     // Get the request body
     const body = await request.json();
-    const { to, subject, message, username, password } = body;
+    const { to, subject, message, username, password, senderName } = body;
 
     // Basic authentication
     const expectedUsername = process.env.NEXT_PUBLIC_MAIL_USERNAME;
@@ -31,9 +31,13 @@ export async function POST(request) {
     // Create Postmark client
     const client = new postmark.ServerClient(process.env.POSTMARK_API_KEY);
 
+    // Format the From field with sender name if provided
+    const fromEmail = process.env.POSTMARK_FROM_EMAIL;
+    const from = senderName ? `${senderName} <${fromEmail}>` : fromEmail;
+
     // Send email using Postmark
     await client.sendEmail({
-      From: process.env.POSTMARK_FROM_EMAIL,
+      From: from,
       To: to,
       Subject: subject,
       HtmlBody: message,
