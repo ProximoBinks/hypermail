@@ -119,3 +119,151 @@ body {
   border-bottom-left-radius: 0.375rem;
   border-bottom-right-radius: 0.375rem;
 }
+
+/* Email history dropdown styling */
+.email-history-dropdown {
+  position: relative;
+}
+
+.email-history-content {
+  max-height: 300px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.email-history-item {
+  transition: all 0.2s ease;
+}
+
+.email-history-item:hover {
+  transform: translateX(3px);
+}
+
+/* Status message styling */
+.status-message {
+  border-left: 4px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.status-message.success {
+  border-left-color: #48bb78;
+}
+
+.status-message.error {
+  border-left-color: #f56565;
+}
+
+.status-message-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.status-message-details.show {
+  max-height: 200px;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Improved button styles */
+.btn {
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: #4299e1;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2b6cb0;
+}
+
+.btn-primary-dark {
+  background-color: #6b46c1;
+  color: white;
+}
+
+.btn-primary-dark:hover {
+  background-color: #553c9a;
+}
+
+.btn-secondary {
+  background-color: #e2e8f0;
+  color: #1a202c;
+}
+
+.btn-secondary:hover {
+  background-color: #cbd5e0;
+}
+
+.btn-secondary-dark {
+  background-color: #4a5568;
+  color: white;
+}
+
+.btn-secondary-dark:hover {
+  background-color: #2d3748;
+}
+
+/* Form input focus effects */
+.form-input:focus {
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
+.dark .form-input:focus {
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.5);
+}
+
+/* Toast notification styling */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1rem;
+  background: white;
+  color: black;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.dark .toast {
+  background: #2d3748;
+  color: white;
+}
+
+.toast.success {
+  border-left: 4px solid #48bb78;
+}
+
+.toast.error {
+  border-left: 4px solid #f56565;
+}
+
+.toast.info {
+  border-left: 4px solid #4299e1;
+}
